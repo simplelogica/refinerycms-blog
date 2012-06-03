@@ -17,3 +17,6 @@ if defined?(Refinery::Page) and !Refinery::Page.exists?(:link_url => '/blog')
     page.parts.create(:title => default_page_part, :body => nil)
   end
 end
+
+# Added by Refinery CMS Pages extension
+Refinery::Pages::Engine.load_seed

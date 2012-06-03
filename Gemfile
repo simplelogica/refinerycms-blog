@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gemspec
 
 gem 'refinerycms', '~> 2.0.3'
+gem 'refinerycms-i18n'
 
 group :development, :test do
   require 'rbconfig'
@@ -17,7 +18,9 @@ group :development, :test do
   end
 
   unless defined?(JRUBY_VERSION)
-    gem 'sqlite3'
+    group :development, :test do
+  gem 'sqlite3'
+end
     gem 'mysql2'
     gem 'pg'
   end

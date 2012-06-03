@@ -4,7 +4,8 @@ module Refinery
       class PostsController < ::Refinery::AdminController
 
         crudify :'refinery/blog/post',
-                :order => 'published_at DESC'
+                :order => 'published_at DESC',
+                :include => [:translations]
 
         before_filter :find_all_categories,
                       :only => [:new, :edit, :create, :update]
@@ -75,6 +76,10 @@ module Refinery
         end
 
       protected
+        def find_post
+          @post = Refinery::Blog::Post.find_by_slug_or_id(params[:id])
+        end
+
         def find_all_categories
           @categories = Refinery::Blog::Category.find(:all)
         end
