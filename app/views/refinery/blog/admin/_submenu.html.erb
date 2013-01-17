@@ -96,7 +96,9 @@
     </li>
     <li>
       <%= link_to t('.settings.teasers'),
-          refinery.teasers_blog_admin_blog_settings_path, :class => "#{blog.teasers_enabled? ? 'success' : 'failure'}_icon" %>
+          refinery.teasers_blog_admin_blog_settings_path(blog.id),
+          :class => "#{blog.teasers_enabled? ? 'success' :
+          'failure'}_icon" %>
     </li>
   </ul>
 
