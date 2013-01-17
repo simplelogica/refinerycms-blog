@@ -44,7 +44,7 @@ module Refinery
       end
 
 
-      def comments_notiticacion_recipients
+      def comments_notifications_recipients
         Refinery::Setting.find_or_set(:comment_notification_recipients, (Refinery::Role[:refinery].users.first.email rescue ''),
                                       {
                                         :scoping => settings_scope,
