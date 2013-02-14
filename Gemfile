@@ -6,6 +6,8 @@ gem 'refinerycms', :git => 'git://github.com/refinery/refinerycms.git'
 gem 'refinerycms-i18n', :git => 'git://github.com/refinery/refinerycms-i18n.git'
 gem 'refinerycms-settings', :git => 'git://github.com/refinery/refinerycms-settings.git'
 
+gem 'rakismet'
+
 group :development, :test do
   require 'rbconfig'
 
