@@ -11,6 +11,8 @@ group :development, :test do
   require 'rbconfig'
 
   gem 'refinerycms-testing', '~> 2.0.0'
+  gem 'vcr'
+  gem 'webmock'
 
   platforms :jruby do
     gem 'activerecord-jdbcsqlite3-adapter'
