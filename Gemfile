@@ -5,6 +5,8 @@ gemspec
 gem 'refinerycms', '~> 2.0.3'
 gem 'refinerycms-i18n'
 
+gem 'rakismet'
+
 group :development, :test do
   require 'rbconfig'
 
