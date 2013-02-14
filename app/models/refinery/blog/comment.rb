@@ -4,9 +4,8 @@ module Refinery
 
       attr_accessible :name, :email, :message
 
-      filters_spam :author_field => :name,
-                   :email_field => :email,
-                   :message_field => :body
+      include Rakismet::Model
+      rakismet_attrs :author => :name, :author_email => :email, :content => :body
 
       belongs_to :post, :foreign_key => 'blog_post_id'
 
