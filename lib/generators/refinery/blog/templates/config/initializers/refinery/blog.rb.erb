@@ -8,4 +8,9 @@ Refinery::Blog.configure do |config|
   # config.post_teaser_length = <%= Refinery::Blog.post_teaser_length.inspect %>
 
   # config.share_this_key = <%= Refinery::Blog.share_this_key.inspect %>
+
+  Rails.application.config.rakismet.key = AKISMET_KEY # Your akismet key
+
+  Rails.application.config.rakismet.url = AKISMET_DOMAIN # 'http://yourdomain.com/'
+
 end
