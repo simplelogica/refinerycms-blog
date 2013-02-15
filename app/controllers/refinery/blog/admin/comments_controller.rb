@@ -41,6 +41,11 @@ module Refinery
           end
         end
 
+        def spam
+          @comments = Refinery::Blog::Comment.spam.page(params[:page])
+          render :index
+        end
+
       end
     end
   end

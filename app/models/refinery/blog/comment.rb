@@ -28,6 +28,10 @@ module Refinery
         def rejected
           where(:state => 'rejected')
         end
+
+        def spam
+          where(:state => 'spam')
+        end
       end
 
       self.per_page = Refinery::Blog.comments_per_page

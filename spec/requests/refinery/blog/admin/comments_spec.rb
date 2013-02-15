@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   module Blog
     module Admin
-      describe Comment do
+      describe Comment, :vcr do
         login_refinery_user
 
         describe "#index" do
@@ -39,6 +39,7 @@ module Refinery
 
               page.should have_content("has been rejected")
             end
+
           end
         end
 
@@ -101,6 +102,38 @@ module Refinery
             end
           end
         end
+
+        describe "#spam" do
+          context "when has no spam comments" do
+            before(:each) do
+              subject.class.delete_all
+              visit refinery.spam_blog_admin_comments_path
+            end
+
+            it "should list no comments" do
+              page.should have_content('There are no spam comments')
+            end
+          end
+          context "when has spam comments" do
+            let!(:blog_comment) do
+              FactoryGirl.create(:blog_comment)
+            end
+            before(:each) { visit refinery.spam_blog_admin_comments_path }
+
+            it "should list comments" do
+              page.should have_content(blog_comment.body)
+              page.should have_content(blog_comment.name)
+            end
+
+            it "should allow me to approve a comment" do
+              click_link "Approve this comment"
+
+              page.should have_content("has been approved")
+            end
+
+          end
+        end
+
 
         describe "#show" do
           let!(:blog_comment) { FactoryGirl.create(:blog_comment) }

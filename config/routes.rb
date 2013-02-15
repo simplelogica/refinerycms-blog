@@ -28,6 +28,7 @@ Refinery::Core::Engine.routes.draw do
           collection do
             get :approved
             get :rejected
+            get :spam
           end
           member do
             get :approved
