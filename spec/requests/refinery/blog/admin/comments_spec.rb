@@ -44,6 +44,8 @@ module Refinery
               click_link "Mark this comment as spam"
 
               page.should have_content("has been marked as spam")
+              blog_comment.reload
+              blog_comment.state.should eq("spam")
             end
 
           end
@@ -81,6 +83,8 @@ module Refinery
               click_link "Mark this comment as spam"
 
               page.should have_content("has been marked as spam")
+              blog_comment.reload
+              blog_comment.state.should eq("spam")
             end
 
           end
@@ -118,6 +122,8 @@ module Refinery
               click_link "Mark this comment as spam"
 
               page.should have_content("has been marked as spam")
+              blog_comment.reload
+              blog_comment.state.should eq("spam")
             end
 
           end
