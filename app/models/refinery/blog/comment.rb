@@ -59,6 +59,11 @@ module Refinery
         self.state == 'approved'
       end
 
+      def spam!
+        super
+        self.update_column(:state, "spam")
+      end
+
       def spam?
         self.state.nil? ? super : (self.state == 'spam')
       end

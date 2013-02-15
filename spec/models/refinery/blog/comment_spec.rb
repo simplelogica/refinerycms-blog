@@ -25,6 +25,19 @@ module Refinery
 
         its (:state) { should eq "spam" }
       end
+
+      context "forcing as spam" do
+
+        let(:comment) do
+          FactoryGirl.create(:blog_comment)
+        end
+
+        before { subject.spam! }
+
+        subject { comment }
+
+        its (:state) { should eq "spam" }
+      end
     end
   end
 end
