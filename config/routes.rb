@@ -33,6 +33,7 @@ Refinery::Core::Engine.routes.draw do
           member do
             get :approved
             get :rejected
+            post :mark_as_spam
           end
         end
 

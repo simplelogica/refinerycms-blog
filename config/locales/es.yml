@@ -18,6 +18,8 @@ es:
             read: Leer este comentario
             reject: Rechazar este comentario
             approve: Aprovar este comentario
+            mark_as_spam: Marcar este comentario como spam
+          marked_as_spam: 'El comentario de "%{author}" ha sido marcado como spam.'
           rejected: 'El comentario de "%{author}" ha sido rechazado.'
           index:
             no_items_yet: 'No hay comentarios %{type}.'
@@ -33,6 +35,7 @@ es:
             back: Volver a todos los comentarios
             reject: Rechazar este comentario
             approve: Aprovar este comentario
+            mark_as_spam: Marcar este comentario como spam
         posts:
           form:
             advanced_options: Opciones avanzadas

@@ -46,6 +46,13 @@ module Refinery
           render :index
         end
 
+        def mark_as_spam
+          @comment = Refinery::Blog::Comment.find(params[:id])
+          @comment.spam!
+          flash[:notice] = t('marked_as_spam', :scope => 'refinery.blog.admin.comments', :author => @comment.name)
+
+          redirect_to refinery.blog_admin_comments_path
+        end
       end
     end
   end
