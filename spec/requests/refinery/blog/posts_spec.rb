@@ -108,7 +108,7 @@ module Refinery
         end
       end
 
-      context "when posting comments" do
+      context "when posting comments without moderation" do
         let(:blog_post) { Factory(:blog_post) }
         let(:name) { "pete" }
         let(:email) { "pete@mcawesome.com" }
@@ -138,6 +138,39 @@ module Refinery
         it "should be displayed on posts page" do
           visit refinery.blog_post_path(blog_post)
           page.should have_content(body)
+        end
+      end
+
+      context "when posting comments with moderation" do
+        let(:blog_post) { Factory(:blog_post) }
+        let(:name) { "pete" }
+        let(:email) { "pete@mcawesome.com" }
+        let(:body) { "Witty comment." }
+
+        before do
+          # not sure why setting the comment_moderation setting doesn't work
+          Refinery::Blog::Comment::Moderation.stub(:enabled?) { true }
+
+          visit refinery.blog_post_path(blog_post)
+
+          fill_in "Name", :with => name
+          fill_in "Email", :with => email
+          fill_in "Message", :with => body
+          click_button "Send comment"
+        end
+
+        it "creates the comment" do
+          comment = blog_post.reload.comments.last
+
+          comment.name.should eq(name)
+          comment.email.should eq(email)
+          comment.body.should eq(body)
+          comment.state.should be_nil
+        end
+
+        it "should not be displayed on posts page" do
+          visit refinery.blog_post_path(blog_post)
+          page.should_not have_content(body)
         end
       end
 
