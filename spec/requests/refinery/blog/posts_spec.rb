@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   describe "Blog::Posts", :vcr do
-
+    login_refinery_user
     context "when has blog posts" do
       let!(:blog_post) { FactoryGirl.create(:blog_post, :title => "Refinery CMS blog post") }
 
