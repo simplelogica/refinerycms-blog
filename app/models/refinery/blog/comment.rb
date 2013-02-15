@@ -37,6 +37,7 @@ module Refinery
       self.per_page = Refinery::Blog.comments_per_page
 
       def approve!
+        ham!
         self.update_column(:state, 'approved')
       end
 
@@ -59,6 +60,11 @@ module Refinery
 
       def spam?
         self.state.nil? ? super : (self.state == 'spam')
+      end
+
+      def ham!
+        super
+        self.update_column(:state, nil) if spam?
       end
 
       def ham?
