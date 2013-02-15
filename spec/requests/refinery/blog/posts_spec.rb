@@ -1,11 +1,4 @@
 require "spec_helper"
-require 'vcr'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/vcr/'
-  c.hook_into :webmock # or :fakeweb
-  c.allow_http_connections_when_no_cassette = true
-end
 
 module Refinery
   describe "Blog::Posts" do
@@ -174,7 +167,7 @@ module Refinery
         end
       end
 
-      context "when posting spam" do
+      context "when posting spam", :vcr do
         let(:blog_post) { Factory(:blog_post) }
         let(:name) { "pete" }
         let(:email) { "pete@mcawesome.com" }
@@ -189,10 +182,7 @@ module Refinery
           fill_in "Name", :with => name
           fill_in "Email", :with => email
           fill_in "Message", :with => body
-
-          VCR.use_cassette('akismet', :record => :new_episodes, :match_requests_on => [:path]) do
-            click_button "Send comment"
-          end
+          click_button "Send comment"
         end
 
         it "creates the comment and detects it's spam" do

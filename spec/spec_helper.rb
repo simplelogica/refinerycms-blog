@@ -54,3 +54,12 @@ else
   setup_environment
   each_run
 end
+
+require 'vcr'
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr/'
+  c.hook_into :webmock # or :fakeweb
+  c.allow_http_connections_when_no_cassette = true
+  c.configure_rspec_metadata!
+  c.default_cassette_options = { :record => :new_episodes, :erb => true, :match_requests_on => [:path] }
+end

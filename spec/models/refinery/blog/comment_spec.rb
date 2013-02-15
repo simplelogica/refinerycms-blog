@@ -1,11 +1,4 @@
 require 'spec_helper'
-require 'vcr'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/vcr/'
-  c.hook_into :webmock # or :fakeweb
-  c.allow_http_connections_when_no_cassette = true
-end
 
 module Refinery
   module Blog
@@ -22,11 +15,10 @@ module Refinery
         end
       end
 
-      context "detecting spam" do
+      context "detecting spam", :vcr do
+
         let(:comment) do
-          VCR.use_cassette('akismet', :record => :new_episodes, :match_requests_on => [:path]) do
-            FactoryGirl.create(:blog_comment)
-          end
+          FactoryGirl.create(:blog_comment)
         end
 
         subject { comment }
