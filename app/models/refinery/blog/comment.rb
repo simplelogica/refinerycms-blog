@@ -55,6 +55,14 @@ module Refinery
         self.state == 'approved'
       end
 
+      def spam?
+        self.state.nil? ? super : (self.state == 'spam')
+      end
+
+      def ham?
+        !spam?
+      end
+
       def unmoderated?
         self.state.nil?
       end
@@ -67,7 +75,9 @@ module Refinery
       end
 
       before_create do |comment|
-        unless Moderation.enabled?
+        if comment.spam?
+          comment.state = 'spam'
+        elsif !Moderation.enabled?
           comment.state = comment.ham? ? 'approved' : 'rejected'
         end
       end
