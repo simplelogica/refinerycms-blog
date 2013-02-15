@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency    'seo_meta',             '~> 1.4.0'
   s.add_dependency    'rails_autolink',       '~> 1.0.7'
   s.add_dependency    'friendly_id',          '~> 4.0.4'
+  s.add_dependency    'rakismet',             '~> 1.3.0'
 end
