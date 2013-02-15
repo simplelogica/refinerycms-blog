@@ -11,6 +11,7 @@ group :development, :test do
   require 'rbconfig'
 
   gem 'refinerycms-testing', '~> 2.0.0'
+  gem 'guard-rspec', '~> 1.1.0'
   gem 'vcr'
   gem 'webmock'
 
