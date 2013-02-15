@@ -163,6 +163,14 @@ module Refinery
               page.should have_content("has been rejected")
             end
 
+            it "should allow me to mark a comment as ham" do
+              click_link "Mark this comment as not spam"
+
+              page.should have_content("has been marked as not spam")
+              blog_comment.reload
+              blog_comment.state.should be_nil
+            end
+
           end
         end
 

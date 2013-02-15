@@ -34,6 +34,7 @@ Refinery::Core::Engine.routes.draw do
             get :approved
             get :rejected
             post :mark_as_spam
+            post :mark_as_ham
           end
         end
 

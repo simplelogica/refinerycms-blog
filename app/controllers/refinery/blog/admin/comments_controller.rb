@@ -53,6 +53,14 @@ module Refinery
 
           redirect_to refinery.blog_admin_comments_path
         end
+
+        def mark_as_ham
+          @comment = Refinery::Blog::Comment.find(params[:id])
+          @comment.ham!
+          flash[:notice] = t('marked_as_ham', :scope => 'refinery.blog.admin.comments', :author => @comment.name)
+
+          redirect_to refinery.blog_admin_comments_path
+        end
       end
     end
   end
