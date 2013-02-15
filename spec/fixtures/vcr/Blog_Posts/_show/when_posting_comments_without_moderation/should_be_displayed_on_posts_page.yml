@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://777b1abd242b.rest.akismet.com/1.1/comment-check
+    uri: http://akismetkey.rest.akismet.com/1.1/comment-check
     body:
       encoding: US-ASCII
       string: comment_author=pete&comment_author_email=pete%40mcawesome.com&comment_content=Witty+comment.&user_ip=127.0.0.1&referrer=http%3A%2F%2Fwww.example.com%2Fblog%2Fposts%2Ftop-6-shopping-centers-in-chicago&comment_type=comment&blog=http%3A%2F%2Flocalhost%2F&is_test=1
@@ -35,6 +35,6 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: 'false'
-    http_version: 
+    http_version:
   recorded_at: Fri, 15 Feb 2013 11:10:35 GMT
 recorded_with: VCR 2.4.0

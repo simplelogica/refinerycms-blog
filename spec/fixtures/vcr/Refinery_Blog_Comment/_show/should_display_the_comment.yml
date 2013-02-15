@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://777b1abd242b.rest.akismet.com/1.1/comment-check
+    uri: http://akismetkey.rest.akismet.com/1.1/comment-check
     body:
       encoding: US-ASCII
       string: comment_author=Joe+Commenter&comment_author_email=person10%40example.com&comment_content=Which+one+is+the+best+for+picking+up+new+shoes%3F&comment_type=comment&blog=http%3A%2F%2Flocalhost%2F&is_test=1

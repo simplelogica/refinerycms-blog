@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://777b1abd242b.rest.akismet.com/1.1/submit-ham
+    uri: http://akismetkey.rest.akismet.com/1.1/submit-ham
     body:
       encoding: US-ASCII
       string: comment_author=Joe+Commenter&comment_author_email=person19%40example.com&comment_content=Which+one+is+the+best+for+picking+up+new+shoes%3F&user_ip=127.0.0.1&referrer=http%3A%2F%2Fwww.example.com%2Frefinery%2Fblog%2Fcomments%2Frejected&comment_type=comment&blog=http%3A%2F%2Flocalhost%2F&is_test=1
@@ -31,6 +31,6 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: Thanks for making the web a better place.
-    http_version: 
+    http_version:
   recorded_at: Fri, 15 Feb 2013 12:22:57 GMT
 recorded_with: VCR 2.4.0
