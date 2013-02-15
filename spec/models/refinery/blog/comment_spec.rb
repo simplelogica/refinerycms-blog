@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Refinery
   module Blog
-    describe Comment do
+    describe Comment, :vcr do
       context "wiring up" do
         let(:comment) { FactoryGirl.create(:blog_comment) }
 
@@ -15,7 +15,7 @@ module Refinery
         end
       end
 
-      context "detecting spam", :vcr do
+      context "detecting spam" do
 
         let(:comment) do
           FactoryGirl.create(:blog_comment)

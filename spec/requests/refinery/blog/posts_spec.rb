@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "Blog::Posts" do
+  describe "Blog::Posts", :vcr do
     refinery_login_with :refinery_user
 
     context "when has blog posts" do
@@ -167,7 +167,7 @@ module Refinery
         end
       end
 
-      context "when posting spam", :vcr do
+      context "when posting spam" do
         let(:blog_post) { Factory(:blog_post) }
         let(:name) { "pete" }
         let(:email) { "pete@mcawesome.com" }
