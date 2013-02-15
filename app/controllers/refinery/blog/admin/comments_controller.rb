@@ -41,6 +41,11 @@ module Refinery
           redirect_to refinery.blog_admin_comments_path
         end
 
+        def spam
+          @comments = Refinery::Blog::Comment.spam.page(params[:page])
+          render :index
+        end
+
       end
     end
   end

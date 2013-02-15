@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://777b1abd242b.rest.akismet.com/1.1/comment-check
+    body:
+      encoding: US-ASCII
+      string: comment_author=Joe+Commenter&comment_author_email=person10%40example.com&comment_content=Which+one+is+the+best+for+picking+up+new+shoes%3F&comment_type=comment&blog=http%3A%2F%2Flocalhost%2F&is_test=1
+    headers:
+      User-Agent:
+      - Rails/3.2.12 | Rakismet/1.3.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 15 Feb 2013 11:19:28 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '32'
+      Connection:
+      - close
+      X-Akismet-Server:
+      - 192.168.7.149
+    body:
+      encoding: US-ASCII
+      string: 'false'
+    http_version:
+  recorded_at: Fri, 15 Feb 2013 11:19:29 GMT
+recorded_with: VCR 2.4.0
