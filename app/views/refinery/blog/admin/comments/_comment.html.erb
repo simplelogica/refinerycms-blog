@@ -11,6 +11,10 @@
     <%= link_to refinery_icon_tag('zoom.png'), refinery.blog_admin_comment_path(comment),
                 :title => t('.read') %>
     <%= link_to refinery_icon_tag("cross.png"),
+                refinery.mark_as_spam_blog_admin_comment_path(comment),
+                :method => :post,
+                :title => t('.mark_as_spam') unless comment.spam? %>
+    <%= link_to refinery_icon_tag("cross.png"),
                 refinery.reject_blog_admin_comment_path(comment),
                 :method => :post,
                 :title => t('.reject') unless comment.rejected? %>

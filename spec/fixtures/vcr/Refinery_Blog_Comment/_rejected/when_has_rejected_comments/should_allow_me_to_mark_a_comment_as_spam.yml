@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://777b1abd242b.rest.akismet.com/1.1/submit-spam
+    body:
+      encoding: US-ASCII
+      string: comment_author=Joe+Commenter&comment_author_email=person20%40example.com&comment_content=Which+one+is+the+best+for+picking+up+new+shoes%3F&user_ip=127.0.0.1&referrer=http%3A%2F%2Fwww.example.com%2Frefinery%2Fblog%2Fcomments%2Frejected&comment_type=comment&blog=http%3A%2F%2Flocalhost%2F&is_test=1
+    headers:
+      User-Agent:
+      - Rails/3.2.12 | Rakismet/1.3.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 15 Feb 2013 11:46:39 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '41'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: Thanks for making the web a better place.
+    http_version: 
+  recorded_at: Fri, 15 Feb 2013 11:46:40 GMT
+recorded_with: VCR 2.4.0

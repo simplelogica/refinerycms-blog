@@ -40,6 +40,12 @@ module Refinery
               page.should have_content("has been rejected")
             end
 
+            it "should allow me to mark a comment as spam" do
+              click_link "Mark this comment as spam"
+
+              page.should have_content("has been marked as spam")
+            end
+
           end
         end
 
@@ -70,6 +76,13 @@ module Refinery
 
               page.should have_content("has been rejected")
             end
+
+            it "should allow me to mark a comment as spam" do
+              click_link "Mark this comment as spam"
+
+              page.should have_content("has been marked as spam")
+            end
+
           end
         end
 
@@ -100,6 +113,13 @@ module Refinery
 
               page.should have_content("has been approved")
             end
+
+            it "should allow me to mark a comment as spam" do
+              click_link "Mark this comment as spam"
+
+              page.should have_content("has been marked as spam")
+            end
+
           end
         end
 
@@ -129,6 +149,12 @@ module Refinery
               click_link "Approve this comment"
 
               page.should have_content("has been approved")
+            end
+
+            it "should allow me to reject a comment" do
+              click_link "Reject this comment"
+
+              page.should have_content("has been rejected")
             end
 
           end
