@@ -19,7 +19,9 @@ en:
             reject: Reject this comment
             approve: Approve this comment
             mark_as_spam: Mark this comment as spam
+            mark_as_ham: Mark this comment as not spam
           marked_as_spam: 'The comment from "%{author}" has been marked as spam.'
+          marked_as_ham: 'The comment from "%{author}" has been marked as not spam.'
           rejected: 'The comment from "%{author}" has been rejected.'
           index:
             no_items_yet: 'There are no %{type} comments.'
@@ -36,6 +38,7 @@ en:
             reject: Reject this comment
             approve: Approve this comment
             mark_as_spam: Mark this comment as spam
+            mark_as_ham: Mark this comment as not spam
         posts:
           form:
             toggle_advanced_options: Click to access meta tag settings and menu options

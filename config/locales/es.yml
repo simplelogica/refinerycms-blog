@@ -19,7 +19,9 @@ es:
             reject: Rechazar este comentario
             approve: Aprovar este comentario
             mark_as_spam: Marcar este comentario como spam
+            mark_as_ham: Marcar este comentario como no spam
           marked_as_spam: 'El comentario de "%{author}" ha sido marcado como spam.'
+          marked_as_ham: 'El comentario de "%{author}" ha sido marcado como no spam.'
           rejected: 'El comentario de "%{author}" ha sido rechazado.'
           index:
             no_items_yet: 'No hay comentarios %{type}.'
@@ -36,6 +38,7 @@ es:
             reject: Rechazar este comentario
             approve: Aprovar este comentario
             mark_as_spam: Marcar este comentario como spam
+            mark_as_ham: Marcar este comentario como no spam
         posts:
           form:
             toggle_advanced_options: Click para acceder a las opciones de menú y etiquetas
