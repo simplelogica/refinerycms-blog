@@ -22,16 +22,15 @@ module Refinery
       end
 
       context "detecting spam" do
-        let(:comment) { FactoryGirl.create(:blog_comment) }
+        let(:comment) do
+          VCR.use_cassette('akismet', :record => :new_episodes, :match_requests_on => [:path]) do
+            FactoryGirl.create(:blog_comment)
+          end
+        end
 
         subject { comment }
 
-        it do
-          # We have tricked the akismet tape so always returns spam
-          VCR.use_cassette('akismet', :record => :new_episodes, :match_requests_on => [:path]) do
-            should be_spam
-          end
-        end
+        its (:state) { should eq "spam" }
       end
     end
   end

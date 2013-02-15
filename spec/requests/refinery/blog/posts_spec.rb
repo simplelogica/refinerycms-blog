@@ -1,4 +1,11 @@
 require "spec_helper"
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr/'
+  c.hook_into :webmock # or :fakeweb
+  c.allow_http_connections_when_no_cassette = true
+end
 
 module Refinery
   describe "Blog::Posts" do
@@ -108,6 +115,9 @@ module Refinery
         let(:body) { "Witty comment." }
 
         before do
+          # not sure why setting the comment_moderation setting doesn't work
+          Refinery::Blog::Comment::Moderation.stub(:enabled?) { false }
+
           visit refinery.blog_post_path(blog_post)
 
           fill_in "Name", :with => name
@@ -122,6 +132,43 @@ module Refinery
           comment.name.should eq(name)
           comment.email.should eq(email)
           comment.body.should eq(body)
+          comment.state.should eq('approved')
+        end
+
+        it "should be displayed on posts page" do
+          visit refinery.blog_post_path(blog_post)
+          page.should have_content(body)
+        end
+      end
+
+      context "when posting spam" do
+        let(:blog_post) { Factory(:blog_post) }
+        let(:name) { "pete" }
+        let(:email) { "pete@mcawesome.com" }
+        let(:body) { "Spammer comment." }
+
+        before do
+          # not sure why setting the comment_moderation setting doesn't work
+          Refinery::Blog::Comment::Moderation.stub(:enabled?) { false }
+
+          visit refinery.blog_post_path(blog_post)
+
+          fill_in "Name", :with => name
+          fill_in "Email", :with => email
+          fill_in "Message", :with => body
+
+          VCR.use_cassette('akismet', :record => :new_episodes, :match_requests_on => [:path]) do
+            click_button "Send comment"
+          end
+        end
+
+        it "creates the comment and detects it's spam" do
+          blog_post.reload.comments.last.state.should eq("spam")
+        end
+
+        it "should not be displayed on posts page" do
+          visit refinery.blog_post_path(blog_post)
+          page.should_not have_content(body)
         end
       end
 
