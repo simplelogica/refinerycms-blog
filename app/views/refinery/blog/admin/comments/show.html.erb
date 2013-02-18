@@ -16,6 +16,16 @@
       <%= link_to t('.approve'), refinery.approved_blog_admin_comment_path(@comment, :return_to => 'approved'),
           :class => 'comment_tick_icon' unless @comment.approved? %>
     </li>
+    <li>
+      <%= link_to t('.mark_as_spam'), refinery.mark_as_spam_blog_admin_comment_path(@comment),
+                                 :method => :post,
+                                 :class => 'comment_spam_icon' unless @comment.spam? %>
+    </li>
+    <li>
+      <%= link_to t('.mark_as_ham'), refinery.mark_as_ham_blog_admin_comment_path(@comment),
+                                 :method => :post,
+                                 :class => 'comment_ham_icon' if @comment.spam? %>
+    </li>
   </ul>
 </div>
 <div id='records'>
