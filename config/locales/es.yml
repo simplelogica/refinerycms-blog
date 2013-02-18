@@ -72,6 +72,7 @@ es:
             unmoderated: Nuevos
             approved: Aprobados
             rejected: Rechazados
+            spam: Spam
           posts:
             title: Entradas
             manage: Gestionar entradas

@@ -82,6 +82,7 @@ en:
             unmoderated: New
             approved: Approved
             rejected: Rejected
+            spam: Spam
           posts:
             title: Posts
             manage: Manage posts

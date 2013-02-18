@@ -49,6 +49,10 @@
         <%= link_to t('.comments.rejected'), refinery.rejected_blog_admin_comments_path,
                     :class => 'comment_cross_icon' %>
       </li>
+      <li>
+        <%= link_to t('.comments.spam'), refinery.spam_blog_admin_comments_path,
+                    :class => 'comment_spam_icon' %>
+      </li>
     </ul>
   <% end %>
 
