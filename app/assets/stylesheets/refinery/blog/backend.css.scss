@@ -1,3 +1,6 @@
+#records .actions {
+  width: 150px;
+}
 .comments_icon {
   background-image: image_url('refinery/blog/icons/comments.png');
 }
@@ -9,6 +12,12 @@
 }
 .comment_tick_icon {
   background-image: image_url('refinery/blog/icons/comment_tick.png');
+}
+.comment_spam_icon {
+  background-image: image_url('refinery/blog/icons/comment_spam.png');
+}
+.comment_ham_icon {
+  background-image: image_url('refinery/blog/icons/comment_ham.png');
 }
 .folder_icon {
   background-image: image_url('refinery/blog/icons/folder.png');

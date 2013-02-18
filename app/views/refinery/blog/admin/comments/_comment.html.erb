@@ -1,7 +1,7 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= "comment-#{comment.to_param}" -%>">
   <span class='title'>
     <%= comment.name %>
-    <span class="preview"> - <%= truncate(comment.message, :length => 75) %></span>
+    <span class="preview"> - <%= truncate(comment.message, :length => 80 - comment.name.length) %></span>
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_go.png"),
@@ -10,11 +10,11 @@
                 :target => "_blank" unless comment.unmoderated? %>
     <%= link_to refinery_icon_tag('zoom.png'), refinery.blog_admin_comment_path(comment),
                 :title => t('.read') %>
-    <%= link_to refinery_icon_tag("cross.png"),
+    <%= link_to image_tag("refinery/blog/icons/comment_spam.png"),
                 refinery.mark_as_spam_blog_admin_comment_path(comment),
                 :method => :post,
                 :title => t('.mark_as_spam') unless comment.spam? %>
-    <%= link_to refinery_icon_tag("tick.png"),
+    <%= link_to image_tag("refinery/blog/icons/comment_ham.png"),
                 refinery.mark_as_ham_blog_admin_comment_path(comment),
                 :method => :post,
                 :title => t('.mark_as_ham') if comment.spam? %>
